@@ -1,2 +1,357 @@
-# Cadet
-Minu/president's college cadet platoon
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>President's College Cadet Unit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --accent:#FFD700;
+    --text:#fff;
+    --glass:rgba(255,255,255,0.08);
+}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+    background:#050505;
+    overflow-x:hidden;
+}
+
+/* Animated glow background */
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,var(--accent),transparent 70%);
+    top:-200px;
+    left:-200px;
+    filter:blur(120px);
+    opacity:.25;
+    animation:moveGlow 12s infinite alternate ease-in-out;
+    z-index:-1;
+}
+@keyframes moveGlow{
+    from{transform:translate(0,0);}
+    to{transform:translate(300px,200px);}
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    background:rgba(0,0,0,.4);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.logo img{width:42px;height:42px;}
+.logo span{
+    font-family:'Orbitron';
+    font-size:14px;
+    color:var(--accent);
+    font-weight:700;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:8px 0 0;
+    padding:0;
+}
+nav ul li{
+    padding:8px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:.3s;
+}
+nav ul li:hover{
+    background:var(--glass);
+    color:var(--accent);
+}
+
+/* Sections */
+section{
+    min-height:100vh;
+    padding:120px 30px 60px;
+    display:none;
+    animation:fade .7s ease;
+}
+section.active{display:block;}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* Hero */
+.hero{text-align:center;}
+.hero img.badge{
+    width:110px;
+    margin:8px;
+    animation:float 4s ease-in-out infinite;
+}
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+}
+
+.hero h1{
+    font-family:'Orbitron';
+    font-size:42px;
+    margin-top:20px;
+    color:var(--accent);
+}
+
+.motto{
+    margin-top:8px;
+    letter-spacing:3px;
+    font-weight:600;
+    color:var(--accent);
+}
+
+/* JOIN BUTTON */
+.join-btn{
+    display:inline-block;
+    margin-top:25px;
+    background:var(--accent);
+    color:#000;
+    padding:14px 28px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:700;
+    transition:.3s;
+}
+.join-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(255,215,0,.5);
+}
+
+/* Glass card */
+.card{
+    background:var(--glass);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    padding:25px;
+    backdrop-filter:blur(12px);
+    margin-top:20px;
+    transition:.3s;
+}
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 0 20px rgba(255,215,0,.25);
+}
+
+/* Gallery */
+.gallery-grid{
+    margin-top:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+.gallery-grid img{
+    width:100%;
+    border-radius:16px;
+    cursor:pointer;
+    transition:.4s;
+}
+.gallery-grid img:hover{
+    transform:translateY(-8px) scale(1.03);
+}
+
+/* Lightbox */
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+.lightbox.active{display:flex;}
+.lightbox img{
+    max-width:90%;
+    max-height:80%;
+    border-radius:12px;
+}
+.lightbox button{
+    position:absolute;
+    border:none;
+    background:rgba(255,215,0,.95);
+    padding:10px 14px;
+    border-radius:50%;
+    cursor:pointer;
+}
+#prevBtn{left:20px;}
+#nextBtn{right:20px;}
+#closeBtn{
+    top:20px;
+    right:20px;
+    border-radius:10px;
+}
+
+/* WhatsApp contact button */
+.whatsapp-btn{
+    display:inline-block;
+    margin-top:15px;
+    background:#25D366;
+    color:#fff;
+    padding:12px 24px;
+    text-decoration:none;
+    border-radius:30px;
+    font-weight:600;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    opacity:.7;
+}
+
+@media(max-width:768px){
+    .hero h1{font-size:28px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">
+        <img src="download (2).png">
+        <img src="download (3).png">
+        <span>President's College Cadet Platoon</span>
+    </div>
+
+    <ul>
+        <li onclick="showTab('home')">Home</li>
+        <li onclick="showTab('about')">About</li>
+        <li onclick="showTab('achievements')">Achievements</li>
+        <li onclick="showTab('contact')">Contact</li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <div class="hero">
+        <img src="download (2).png" class="badge">
+        <img src="download (3).png" class="badge">
+
+        <h1>President’s College Cadet Unit 2k26</h1>
+        <div class="motto">NEVER BE UNPREPARED</div>
+
+        <!-- NEW JOIN BUTTON -->
+         <a class="join-btn"
+   href="https://forms.gle/iH2zCBeDSc2CC2z27"
+   target="_blank">
+   📝 Join With Us
+</a>
+   </div>
+
+    <div class="gallery-grid">
+        <img src="WhatsApp Image 2026-01-30 at 12.10.52 PM.jpeg">
+        <img src="WhatsApp Image 2026-02-04 at 8.21.07 AM (1).jpeg">
+        <img src="622395049_1458296089638799_1325109626168769759_n.jpeg">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+    <h1>About Us</h1>
+    <div class="card">
+        Our cadet platoon develops leadership, discipline, teamwork and national pride through training, camps and drills.
+    </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+    <h1>Achievements</h1>
+    <div class="card">🏆 2025 Battalion Camp 8th place</div>
+    <div class="card">🎖 2024 provincial camp 1st place</div>
+    <div class="card">🏆 2023 Hermon loose 7th place</div>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h1>Contact Us</h1>
+    <div class="card">
+        <p>Send us a direct message via WhatsApp:</p>
+        <a class="whatsapp-btn"
+           href="https://wa.me/94772999905?text=Hello%20President%20College%20Cadet%20Unit"
+           target="_blank">
+           Send WhatsApp Message
+        </a>
+    </div>
+</section>
+
+<footer>© 2026 President's College Cadet Platoon</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <button id="closeBtn">✕</button>
+    <button id="prevBtn">◀</button>
+    <img id="lightboxImg">
+    <button id="nextBtn">▶</button>
+</div>
+
+<script>
+function showTab(id){
+    document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+    window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* Gallery lightbox */
+const imgs=document.querySelectorAll(".gallery-grid img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightboxImg");
+let current=0;
+
+imgs.forEach((img,i)=>{
+    img.onclick=()=>{
+        current=i;
+        showImage();
+        lightbox.classList.add("active");
+    };
+});
+
+function showImage(){ lightboxImg.src=imgs[current].src; }
+
+document.getElementById("nextBtn").onclick=()=>{
+    current=(current+1)%imgs.length;
+    showImage();
+};
+document.getElementById("prevBtn").onclick=()=>{
+    current=(current-1+imgs.length)%imgs.length;
+    showImage();
+};
+document.getElementById("closeBtn").onclick=()=> lightbox.classList.remove("active");
+
+lightbox.onclick=e=>{
+    if(e.target===lightbox) lightbox.classList.remove("active");
+};
+</script>
+
+</body>
+</html>
